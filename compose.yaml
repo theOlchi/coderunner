@@ -1,0 +1,12 @@
+services:
+  moodle:
+    build: ./moodle/
+    container_name: moodle
+    ports:
+      - "8080:80"
+
+  jobe:
+    build: ./jobe/
+    container_name: jobe
+    ports:
+      - "4315:80"
