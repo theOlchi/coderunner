@@ -1,10 +1,13 @@
 FROM ubuntu:latest
 
 # Install dependencies
-RUN apt update -y && \
-    apt upgrade -y && \
-    DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends tzdata && \
-    apt install -y apache2 mysql-client mysql-server php libapache2-mod-php vim graphviz aspell ghostscript clamav php-pspell php-curl php-gd php-intl php-mysql php-xml php-xmlrpc php-ldap php-zip php-soap php-mbstring git && \
+RUN apt-get update -y && \
+    apt-get upgrade -y && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository -y ppa:ondrej/php && \
+    apt-get update -y && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata && \
+    apt-get install -y apache2 mysql-client mysql-server php8.1 libapache2-mod-php8.1 vim graphviz aspell ghostscript clamav php8.1-pspell php8.1-curl php8.1-gd php8.1-intl php8.1-mysql php8.1-xml php8.1-xmlrpc php8.1-ldap php8.1-zip php8.1-soap php8.1-mbstring git && \
     rm -rf /var/lib/apt/lists/*
 
 # Clone Moodle repository
